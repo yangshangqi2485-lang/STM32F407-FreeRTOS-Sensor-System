@@ -1,0 +1,4 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/Core/Src/main.c:79:5:main	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/Core/Src/main.c:133:6:SystemClock_Config	88	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/Core/Src/main.c:186:6:HAL_TIM_PeriodElapsedCallback	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/Core/Src/main.c:204:6:Error_Handler	4	static

@@ -1,0 +1,4 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/porting/lv_port_disp.c:133:13:disp_flush	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/porting/lv_port_disp.c:58:6:lv_port_disp_init	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/porting/lv_port_disp.c:117:6:disp_enable_update	0	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/porting/lv_port_disp.c:124:6:disp_disable_update	0	static

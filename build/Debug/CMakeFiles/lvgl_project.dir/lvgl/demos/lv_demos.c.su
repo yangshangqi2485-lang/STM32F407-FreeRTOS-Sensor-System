@@ -1,0 +1,4 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/stdlib/lv_string.h:73:20:lv_memzero	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/lv_demos.c:74:6:lv_demo_args_init	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/lv_demos.c:81:6:lv_demos_create	32	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/lv_demos.c:116:6:lv_demos_show_help	16	static

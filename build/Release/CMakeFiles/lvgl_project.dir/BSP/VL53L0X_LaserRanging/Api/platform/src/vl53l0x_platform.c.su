@@ -1,0 +1,12 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/VL53L0X_LaserRanging/Api/platform/src/vl53l0x_platform.c:91:15:VL53L0X_LockSequenceAccess	0	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/VL53L0X_LaserRanging/Api/platform/src/vl53l0x_platform.c:97:15:VL53L0X_UnlockSequenceAccess	0	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/VL53L0X_LaserRanging/Api/platform/src/vl53l0x_platform.c:104:15:VL53L0X_WriteMulti	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/VL53L0X_LaserRanging/Api/platform/src/vl53l0x_platform.c:125:15:VL53L0X_ReadMulti	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/VL53L0X_LaserRanging/Api/platform/src/vl53l0x_platform.c:146:15:VL53L0X_WrByte	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/VL53L0X_LaserRanging/Api/platform/src/vl53l0x_platform.c:161:15:VL53L0X_WrWord	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/VL53L0X_LaserRanging/Api/platform/src/vl53l0x_platform.c:176:15:VL53L0X_WrDWord	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/VL53L0X_LaserRanging/Api/platform/src/vl53l0x_platform.c:191:15:VL53L0X_UpdateByte	32	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/VL53L0X_LaserRanging/Api/platform/src/vl53l0x_platform.c:215:15:VL53L0X_RdByte	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/VL53L0X_LaserRanging/Api/platform/src/vl53l0x_platform.c:230:15:VL53L0X_RdWord	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/VL53L0X_LaserRanging/Api/platform/src/vl53l0x_platform.c:245:16:VL53L0X_RdDWord	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/VL53L0X_LaserRanging/Api/platform/src/vl53l0x_platform.c:261:15:VL53L0X_PollingDelay	8	static

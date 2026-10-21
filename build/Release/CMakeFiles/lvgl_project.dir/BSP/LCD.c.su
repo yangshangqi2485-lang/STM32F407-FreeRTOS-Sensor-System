@@ -1,0 +1,14 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/LCD.c:14:6:LCD_SPI_SendByte	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/LCD.c:22:6:LCD_WriteCommand	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/LCD.c:34:6:LCD_WriteData	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/LCD.c:46:6:LCD_Reset	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/LCD.c:57:6:LCD_Init	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/LCD.c:161:6:LCD_SetAddressWindow	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/LCD.c:185:6:LCD_Fill	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/LCD.c:214:9:XPT2046_SPI_ReadWriteByte	32	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/LCD.c:226:10:XPT2046_Read_ADC	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/LCD.c:256:10:XPT2046_Read_Average	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/LCD.c:270:9:Touch_IsPressed	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/LCD.c:317:10:Touch_Map_X	0	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/LCD.c:337:10:Touch_Map_Y	0	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/LCD.c:286:9:Touch_Read_XY	24	static

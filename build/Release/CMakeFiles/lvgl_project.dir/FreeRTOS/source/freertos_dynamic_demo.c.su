@@ -1,0 +1,8 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/freertos_dynamic_demo.c:197:6:Task_1	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/freertos_dynamic_demo.c:235:6:Task_2	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/freertos_dynamic_demo.c:260:6:Task_3	48	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/freertos_dynamic_demo.c:313:6:Task_4	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/freertos_dynamic_demo.c:335:6:Task_5	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/freertos_dynamic_demo.c:40:6:vApplicationStackOverflowHook	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/freertos_dynamic_demo.c:54:6:vApplicationMallocFailedHook	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/freertos_dynamic_demo.c:107:6:FreeRTOS_Dynamic_Start	16	static

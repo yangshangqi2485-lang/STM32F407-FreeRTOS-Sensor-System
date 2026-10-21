@@ -1,0 +1,10 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/font/binfont_loader/lv_binfont_loader.c:464:13:release_glyph_cb	0	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/font/binfont_loader/lv_binfont_loader.c:724:13:binfont_font_free_src_cb	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/font/binfont_loader/lv_binfont_loader.c:709:15:binfont_font_dup_src_cb	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/font/binfont_loader/lv_binfont_loader.c:217:12:read_label	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/font/binfont_loader/lv_binfont_loader.c:133:6:lv_binfont_destroy	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/font/binfont_loader/lv_binfont_loader.c:704:13:binfont_font_delete_cb	0	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/font/binfont_loader/lv_binfont_loader.c:589:9:load_kern	56	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/font/binfont_loader/lv_binfont_loader.c:96:13:lv_binfont_create.part.0	152	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/font/binfont_loader/lv_binfont_loader.c:96:13:lv_binfont_create	0	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/font/binfont_loader/lv_binfont_loader.c:685:20:binfont_font_create_cb	0	static

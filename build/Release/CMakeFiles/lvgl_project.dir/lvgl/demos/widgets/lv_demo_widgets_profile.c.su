@@ -1,0 +1,5 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets_profile.c:442:13:slider_event_cb	408	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets_profile.c:398:13:birthday_event_cb	32	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets_profile.c:423:13:calendar_event_cb	64	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets_profile.c:368:13:ta_event_cb	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets_profile.c:48:6:lv_demo_widgets_profile_create	152	static

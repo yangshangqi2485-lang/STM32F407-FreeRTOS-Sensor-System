@@ -1,0 +1,3 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/draw/sw/lv_draw_sw_grad.c:165:28:lv_draw_sw_grad_color_calculate	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/draw/sw/lv_draw_sw_grad.c:145:26:lv_draw_sw_grad_get	32	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/draw/sw/lv_draw_sw_grad.c:218:6:lv_draw_sw_grad_cleanup	0	static

@@ -1,0 +1,4 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/NTC.c:18:6:NTC_DMA_Init	0	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/NTC.c:32:5:NTC_DMA_Value	0	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/NTC.c:45:7:NTC_DMA_Voltage	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/NTC.c:61:7:NTC_Temperature	24	static

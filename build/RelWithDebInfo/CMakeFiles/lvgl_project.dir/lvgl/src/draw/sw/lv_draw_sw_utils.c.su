@@ -1,0 +1,5 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/draw/sw/lv_draw_sw_utils.c:129:6:lv_draw_sw_i1_to_argb8888	36	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/draw/sw/lv_draw_sw_utils.c:149:6:lv_draw_sw_rgb565_swap	36	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/draw/sw/lv_draw_sw_utils.c:192:6:lv_draw_sw_i1_invert	4	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/draw/sw/lv_draw_sw_utils.c:223:6:lv_draw_sw_i1_convert_to_vtiled	48	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/draw/sw/lv_draw_sw_utils.c:252:6:lv_draw_sw_rotate	32	static

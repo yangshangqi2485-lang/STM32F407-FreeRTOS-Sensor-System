@@ -1,0 +1,11 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/Software_I2C.c:13:6:Delay_us	12	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/Software_I2C.c:47:6:Software_I2C_Init	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/Software_I2C.c:59:6:Software_I2C_Start	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/Software_I2C.c:74:6:Software_I2C_Stop	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/Software_I2C.c:87:6:Software_I2C_Ack	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/Software_I2C.c:101:6:Software_I2C_NAck	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/Software_I2C.c:116:9:Software_I2C_WaitAck	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/Software_I2C.c:142:6:Software_I2C_SendByte	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/Software_I2C.c:159:9:Software_I2C_ReadByte	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/Software_I2C.c:200:9:Software_I2C_SendData	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/BSP/Software_I2C.c:231:9:Software_I2C_ReadData	24	static

@@ -1,0 +1,13 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_draw.c:474:21:image_apply_layer_recolor.isra	32	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_draw.c:455:19:normal_apply_layer_recolor.isra	40	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_draw.c:500:13:drop_shadow_init	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_draw.c:49:6:lv_obj_init_draw_rect_dsc	64	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_draw.c:171:6:lv_obj_init_draw_label_dsc	40	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_draw.c:212:6:lv_obj_init_draw_image_dsc	56	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_draw.c:254:6:lv_obj_init_draw_line_dsc	40	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_draw.c:297:6:lv_obj_init_draw_arc_dsc	40	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_draw.c:335:6:lv_obj_init_draw_blur_dsc	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_draw.c:353:9:lv_obj_calculate_ext_draw_size	32	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_draw.c:398:6:lv_obj_refresh_ext_draw_size	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_draw.c:422:9:lv_obj_get_ext_draw_size	0	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_draw.c:428:17:lv_obj_get_layer_type	0	static

@@ -1,0 +1,9 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:302:13:lv_switch_anim_completed	0	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:292:13:lv_switch_anim_exec_cb	0	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:142:13:lv_switch_destructor	0	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:192:13:draw_main	384	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:125:13:lv_switch_constructor	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:150:13:lv_switch_event	128	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:88:12:lv_switch_create	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:100:6:lv_switch_set_orientation	0	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:113:25:lv_switch_get_orientation	0	static

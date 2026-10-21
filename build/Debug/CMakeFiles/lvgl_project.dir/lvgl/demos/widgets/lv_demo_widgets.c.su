@@ -1,0 +1,14 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_style.h:276:20:lv_obj_set_style_pad_all	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/lvgl.h:196:19:lv_version_major	4	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/lvgl.h:201:19:lv_version_minor	4	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/lvgl.h:206:19:lv_version_patch	4	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets.c:59:6:lv_demo_widgets	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets.c:66:6:lv_demo_widgets_with_args	56	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets.c:109:6:lv_demo_widgets_start_slideshow	120	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets.c:134:13:color_changer_create	56	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets.c:187:13:color_changer_anim_cb	48	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets.c:213:13:color_changer_event_cb	128	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets.c:237:13:color_event_cb	160	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets.c:276:13:scroll_anim_y_cb	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets.c:281:13:slideshow_anim_completed_cb	136	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets.c:310:13:tabview_delete_event_cb	24	static

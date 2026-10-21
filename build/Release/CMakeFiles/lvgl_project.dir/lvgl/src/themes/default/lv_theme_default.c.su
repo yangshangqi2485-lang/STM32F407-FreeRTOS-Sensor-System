@@ -1,0 +1,11 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/themes/default/lv_theme_default.c:733:13:theme_apply	32	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/misc/lv_style.h:639:20:lv_style_set_pad_gap	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/misc/lv_style.h:628:20:lv_style_set_pad_ver	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/misc/lv_style.h:617:20:lv_style_set_pad_hor	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/misc/lv_style.h:604:20:lv_style_set_pad_all	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/themes/default/lv_theme_default.c:691:6:lv_theme_default_is_inited	0	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/themes/default/lv_theme_default.c:1222:13:style_init_reset	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/themes/default/lv_theme_default.c:625:14:lv_theme_default_init	120	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/themes/default/lv_theme_default.c:1233:13:resolution_change_event_cb	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/themes/default/lv_theme_default.c:698:14:lv_theme_default_get	8	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/themes/default/lv_theme_default.c:707:6:lv_theme_default_deinit	16	static

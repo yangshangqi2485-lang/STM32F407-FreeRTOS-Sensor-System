@@ -1,0 +1,17 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/misc/lv_area.h:107:20:lv_area_copy	16	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_style_gen.h:320:23:lv_obj_get_style_pad_top	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_style_gen.h:332:23:lv_obj_get_style_pad_bottom	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_style_gen.h:344:23:lv_obj_get_style_pad_left	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_style_gen.h:356:23:lv_obj_get_style_pad_right	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_style_gen.h:1535:24:lv_obj_get_style_anim_duration	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_style_gen.h:1585:29:lv_obj_get_style_base_dir	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:88:12:lv_switch_create	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:100:6:lv_switch_set_orientation	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:113:25:lv_switch_get_orientation	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:125:13:lv_switch_constructor	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:142:13:lv_switch_destructor	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:150:13:lv_switch_event	64	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:192:13:draw_main	440	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:292:13:lv_switch_anim_exec_cb	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:302:13:lv_switch_anim_completed	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/widgets/switch/lv_switch.c:313:13:lv_switch_trigger_anim	136	static

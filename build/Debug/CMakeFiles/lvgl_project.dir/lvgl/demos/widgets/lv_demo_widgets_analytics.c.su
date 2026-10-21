@@ -1,0 +1,16 @@
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_style_gen.h:320:23:lv_obj_get_style_pad_top	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_style_gen.h:344:23:lv_obj_get_style_pad_left	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_style.h:276:20:lv_obj_set_style_pad_all	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_style.h:284:20:lv_obj_set_style_pad_hor	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_style.h:290:20:lv_obj_set_style_pad_ver	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/src/core/lv_obj_style.h:296:20:lv_obj_set_style_margin_all	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets_analytics.c:81:6:lv_demo_widgets_analytics_create	240	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets_analytics.c:334:13:scale3_delete_event_cb	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets_analytics.c:351:13:scale1_indic1_anim_cb	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets_analytics.c:360:13:scale2_timer_cb	40	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets_analytics.c:416:13:scale3_anim_cb	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets_analytics.c:425:13:scale3_size_changed_event_cb	32	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets_analytics.c:442:13:delete_timer_event_cb	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets_analytics.c:451:19:create_scale_box	88	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets_analytics.c:519:19:create_chart_with_scales	64	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/lvgl/demos/widgets/lv_demo_widgets_analytics.c:569:13:chart_event_cb	520	static
