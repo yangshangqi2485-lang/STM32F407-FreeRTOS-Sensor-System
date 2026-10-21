@@ -305,6 +305,9 @@ void Task_3(void *pvParameters)
                 error_status = VL53L0X_Stop();
                 VL53L0X_Errors(error_status); // 检测关闭过程是否错误
                 
+                // 恢复任务调度
+                xTaskResumeAll();
+                
                 xSemaphoreGive(I2C_Mutex_Handle); // 释放I2C使用权
             }
             

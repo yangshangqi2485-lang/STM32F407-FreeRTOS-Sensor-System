@@ -631,3 +631,7 @@
 28	170	8142659964890377	CMakeFiles/lvgl_project.dir/BSP/Software_I2C.c.obj	c38c39345815491e
 21	258	8142659964820416	CMakeFiles/lvgl_project.dir/Core/Src/main.c.obj	f7bf3c3243a1a99a
 258	625	8142659967189384	lvgl_project.elf	13cf3d2098b1f38f
+19	739	8142722682451935	CMakeFiles/lvgl_project.dir/FreeRTOS/source/freertos_dynamic_demo.c.obj	4b2c850a18317ee3
+740	3883	8142722689659691	lvgl_project.elf	13cf3d2098b1f38f
+20	252	8142725414553354	CMakeFiles/lvgl_project.dir/FreeRTOS/source/freertos_dynamic_demo.c.obj	4b2c850a18317ee3
+252	610	8142725416868219	lvgl_project.elf	13cf3d2098b1f38f
