@@ -267,18 +267,12 @@ void Task_3(void *pvParameters)
             if (xSemaphoreTake(I2C_Mutex_Handle, portMAX_DELAY) == pdPASS)
             {
                 // HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0); // 切换板载 LED 状态，作为按钮按下的视觉反馈
-
-                // 挂起任务调度（防止高优先级任务中途抢占，确保软件I2C微秒级时序正确）
-                vTaskSuspendAll();
                 
                 error_status = VL53L0X_Start();
                 VL53L0X_Errors(error_status); // 检测开启过程是否错误
 
                 // 抓取最新的绝对毫米距离 (ToF 时间转换值)
                 distance_mm = VL53L0X_GetDistance();
-                
-                // 恢复任务调度
-                xTaskResumeAll();
 
                 xSemaphoreGive(I2C_Mutex_Handle); // 释放I2C使用权
             }
@@ -298,15 +292,9 @@ void Task_3(void *pvParameters)
             if (xSemaphoreTake(I2C_Mutex_Handle, portMAX_DELAY) == pdPASS)
             {
                 // HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0); // 切换板载 LED 状态，作为按钮按下的视觉反馈
-
-                // 挂起任务调度（防止高优先级任务中途抢占，确保软件I2C微秒级时序正确）
-                vTaskSuspendAll();
                 
                 error_status = VL53L0X_Stop();
                 VL53L0X_Errors(error_status); // 检测关闭过程是否错误
-                
-                // 恢复任务调度
-                xTaskResumeAll();
                 
                 xSemaphoreGive(I2C_Mutex_Handle); // 释放I2C使用权
             }
