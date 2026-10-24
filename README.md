@@ -40,6 +40,6 @@
 ├── CMakeLists.txt         # CMake 主构建脚本
 ├── lvgl_project.ioc       # STM32CubeMX 工程配置文件
 ├── STM32F407.svd          # 芯片外设寄存器描述文件，用于在 IDE 调试时查看外设寄存器状态。
-├── STM32F407XX_FLASH.ld   # 链接脚本（Linker Script），定义了 STM32F407 的 Flash 和 RAM 内存空间分配布局。
+├── STM32F407XX_FLASH.ld   # 链接脚本，定义了 STM32F407 的 Flash 和 RAM 内存空间分配布局。
 ├── startup_stm32f407xx.s  # 汇编启动文件，负责芯片上电后的初始化、中断向量表设置并跳转到 main 函数。
 └── README.md              # 项目说明文档
