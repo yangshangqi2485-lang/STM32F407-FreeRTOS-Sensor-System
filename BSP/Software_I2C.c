@@ -40,7 +40,7 @@ void delay_us(uint32_t us)
   uint32_t reload = SysTick->LOAD; // 1ms 的重装载计数值
 
   // 计算 us 对应的总时钟节拍数 (SystemCoreClock 单位是 Hz，除以 1000000 即 1μs 的节拍)
-  ticks = us * (SystemCoreClock / 1000000);   // 16000000 / 1000000 = 16(ticks) = 1us
+  ticks = us * (SystemCoreClock / 1000000);   // 168000000 / 1000000 = 16(ticks) = 1us
   ticks_old = SysTick->VAL; // 记录刚进来时的数值
 
   while (1)
