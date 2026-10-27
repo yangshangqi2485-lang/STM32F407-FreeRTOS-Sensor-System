@@ -8,16 +8,18 @@
 
 /**
  * @brief  微秒级阻塞延时（基于 TIM6，1MHz 计数）
- * @param  us: 延时的微秒数（无上限限制，自动处理 16 位定时器溢出）
+ * @param  us: 延时的微秒数
  */
 void Delay_us(uint32_t us)
 {
+    uint16_t start = 0;
+
     // 如果延时非常大（超过 TIM6 16位最大计数 65535），先进行分段
     while (us > 60000)
     {
         // 先处理 60000us (60ms) 的延时
-        uint16_t start = TIM6->CNT;
-        while ((uint16_t)(TIM6->CNT - start) < 60000);
+        start = TIM6->CNT;
+        while ((uint16_t)(TIM6->CNT - start) < 60000); // (uint16_t) 二进制补码特性，去负数符号，获取差值
         us -= 60000;
     }
 
@@ -31,37 +33,39 @@ void Delay_us(uint32_t us)
 
 /**
  * @brief  微秒级阻塞延时（基于 SysTick，1MHz 计数）
- * @param  us: 延时的微秒数（无上限限制，自动处理 16 位定时器溢出）
+ * @param  us: 延时的微秒数
  */
 void delay_us(uint32_t us)
 {
-  uint32_t ticks = 0;
-  uint32_t ticks_old = 0, ticks_now = 0, ticks_cnt = 0;
-  uint32_t reload = SysTick->LOAD; // 1ms 的重装载计数值
+    uint32_t ticks = 0;
+    uint32_t ticks_old = 0, ticks_now = 0, ticks_cnt = 0;
+    uint32_t reload = SysTick->LOAD; // 1ms 的重装载计数值
 
-  // 计算 us 对应的总时钟节拍数 (SystemCoreClock 单位是 Hz，除以 1000000 即 1μs 的节拍)
-  ticks = us * (SystemCoreClock / 1000000);   // 168000000 / 1000000 = 16(ticks) = 1us
-  ticks_old = SysTick->VAL; // 记录刚进来时的数值
+    // 计算 us 对应的总时钟节拍数 (SystemCoreClock 单位是 Hz，除以 1000000 即 1μs 的节拍)
+    ticks = us * (SystemCoreClock / 1000000); // 168000000 / 1000000 = 168(ticks) = 1us
 
-  while (1)
-  {
-    ticks_now = SysTick->VAL;
-    if (ticks_now != ticks_old)
+    ticks_old = SysTick->VAL; // 记录刚进来时的数值
+
+    while (1)
     {
-      // SysTick 是倒计数的，所以是用 ticks_old - ticks_now
-      if (ticks_now < ticks_old)
-        ticks_cnt += ticks_old - ticks_now;
-      else
-        // 如果刚好跨越了一次 1ms 重装载（溢出）
-        ticks_cnt += reload - ticks_now + ticks_old;
+        ticks_now = SysTick->VAL;
 
-      ticks_old = ticks_now;
+        if (ticks_now != ticks_old)
+        {
+            // SysTick 是倒计数的，所以是用 ticks_old - ticks_now
+            if (ticks_now < ticks_old)
+                ticks_cnt += ticks_old - ticks_now;
+            else
+                // 如果刚好跨越了一次 1ms 重装载（溢出）
+                ticks_cnt += reload - ticks_now + ticks_old;
 
-      // 计数值达到了要求，退出循环
-      if (ticks_cnt >= ticks)
-        break;
+            ticks_old = ticks_now;
+
+            // 计数值达到了要求，退出循环
+            if (ticks_cnt >= ticks)
+                break;
+        }
     }
-  }
 }
 
 /**
