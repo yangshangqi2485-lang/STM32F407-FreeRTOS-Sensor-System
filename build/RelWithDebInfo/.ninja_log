@@ -622,3 +622,5 @@
 8	210	8145210186003267	D:/ysq/MCU/stm32f407vet6/lvgl_project/build/RelWithDebInfo/cmake_install.cmake	cae0dc1336cf3680
 8	210	8145210186053133	D:/ysq/MCU/stm32f407vet6/lvgl_project/build/RelWithDebInfo/cmake/stm32cubemx/cmake_install.cmake	cae0dc1336cf3680
 24	114	8142659964851083	CMakeFiles/lvgl_project.dir/Core/Src/tim.c.obj	97a7e759c8947d66
+31	273	8145212849253438	CMakeFiles/lvgl_project.dir/FreeRTOS/source/freertos_dynamic_demo.c.obj	4b2c850a18317ee3
+274	4155	8145212851686631	lvgl_project.elf	13cf3d2098b1f38f

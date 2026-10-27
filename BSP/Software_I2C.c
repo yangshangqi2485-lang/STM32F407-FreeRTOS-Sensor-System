@@ -30,6 +30,41 @@ void Delay_us(uint32_t us)
 }
 
 /**
+ * @brief  微秒级阻塞延时（基于 SysTick，1MHz 计数）
+ * @param  us: 延时的微秒数（无上限限制，自动处理 16 位定时器溢出）
+ */
+void delay_us(uint32_t us)
+{
+  uint32_t ticks = 0;
+  uint32_t ticks_old = 0, ticks_now = 0, ticks_cnt = 0;
+  uint32_t reload = SysTick->LOAD; // 1ms 的重装载计数值
+
+  // 计算 us 对应的总时钟节拍数 (SystemCoreClock 单位是 Hz，除以 1000000 即 1μs 的节拍)
+  ticks = us * (SystemCoreClock / 1000000);   // 16000000 / 1000000 = 16(ticks) = 1us
+  ticks_old = SysTick->VAL; // 记录刚进来时的数值
+
+  while (1)
+  {
+    ticks_now = SysTick->VAL;
+    if (ticks_now != ticks_old)
+    {
+      // SysTick 是倒计数的，所以是用 ticks_old - ticks_now
+      if (ticks_now < ticks_old)
+        ticks_cnt += ticks_old - ticks_now;
+      else
+        // 如果刚好跨越了一次 1ms 重装载（溢出）
+        ticks_cnt += reload - ticks_now + ticks_old;
+
+      ticks_old = ticks_now;
+
+      // 计数值达到了要求，退出循环
+      if (ticks_cnt >= ticks)
+        break;
+    }
+  }
+}
+
+/**
  * @brief  引脚初始化
  * @param  无
  * @retval 无
