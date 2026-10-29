@@ -306,7 +306,7 @@ void Task_3(void *pvParameters)
             // 将距离数据发送到LCD任务队列
             xQueueSend(Display_Queue_Handle, &tx_msg, 0);
             
-            // 进入阻塞状态，等待下一次设置任意事件标志位再唤醒
+            // 进入阻塞状态，等待下一次置位任意事件标志位再唤醒
             xEventGroupWaitBits(EventGroupHandle, EVENT_BIT_0, pdFALSE, pdFALSE, portMAX_DELAY);
         }
     }
