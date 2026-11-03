@@ -64,8 +64,6 @@ void vApplicationMallocFailedHook(void)
 /* =============== 实现流程 ================ */
 /* ======================================== */
 
-// ====== PS: 也可以利用结构体实现 ========
-
 /* 声明函数 */
 void Task_1(void *pvParameters); // LCD 任务函数（LVGL图形）
 void Task_2(void *pvParameters); // VL53L0X 开关按钮 任务函数
@@ -182,6 +180,9 @@ void FreeRTOS_Dynamic_Start(void)
     vTaskStartScheduler();
 }
 
+/**
+ * @brief LCD 任务函数（LVGL图形）
+ */
 void Task_1(void *pvParameters)
 {
     /* 1. 任务单次初始化（可选） */
@@ -221,6 +222,9 @@ void Task_1(void *pvParameters)
     }
 }
 
+/**
+ * @brief VL53L0X 开关按钮 任务函数
+ */
 void Task_2(void *pvParameters)
 {
     /* 1. 任务单次初始化（可选） */
@@ -248,6 +252,9 @@ void Task_2(void *pvParameters)
     }
 }
 
+/**
+ * @brief VL53L0X 激光测距 任务函数
+ */
 void Task_3(void *pvParameters)
 {
     /* 1. 任务单次初始化（可选） */
@@ -312,6 +319,9 @@ void Task_3(void *pvParameters)
     }
 }
 
+/**
+ * @brief NTC温度 任务函数（ADC测量）
+ */
 void Task_4(void *pvParameters)
 {
     /* 1. 任务单次初始化（可选） */
