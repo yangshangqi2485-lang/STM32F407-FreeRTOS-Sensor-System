@@ -7,7 +7,7 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "stm32cubemx::@768a070a0fe75716b479",
-					"jsonFile" : "target-stm32cubemx-RelWithDebInfo-7fcb769b380b6c5ad09b.json",
+					"jsonFile" : "target-stm32cubemx-RelWithDebInfo-c7ed0e857b3e19d9e946.json",
 					"name" : "stm32cubemx",
 					"projectIndex" : 0
 				}
@@ -80,21 +80,21 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "STM32_Drivers::@768a070a0fe75716b479",
-					"jsonFile" : "target-STM32_Drivers-RelWithDebInfo-362895785ae552ae84fe.json",
+					"jsonFile" : "target-STM32_Drivers-RelWithDebInfo-1e75eea74fb8f53dc0f2.json",
 					"name" : "STM32_Drivers",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 1,
 					"id" : "USB_Device_Library::@768a070a0fe75716b479",
-					"jsonFile" : "target-USB_Device_Library-RelWithDebInfo-cbb6bc5efd2dde8086db.json",
+					"jsonFile" : "target-USB_Device_Library-RelWithDebInfo-d4691b77fbe7f186a449.json",
 					"name" : "USB_Device_Library",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "lvgl_project::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-lvgl_project-RelWithDebInfo-ec1126f8d4fcb570d840.json",
+					"jsonFile" : "target-lvgl_project-RelWithDebInfo-c6e8aad1d1265bd66a96.json",
 					"name" : "lvgl_project",
 					"projectIndex" : 0
 				}

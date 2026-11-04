@@ -44,7 +44,7 @@
 			{
 				"command" : 2,
 				"file" : 1,
-				"line" : 113,
+				"line" : 115,
 				"parent" : 3
 			},
 			{
@@ -62,7 +62,7 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 107,
+				"line" : 109,
 				"parent" : 3
 			},
 			{
@@ -210,7 +210,7 @@
 				12,
 				13,
 				14,
-				16,
+				15,
 				17,
 				18,
 				19,
@@ -786,7 +786,8 @@
 				589,
 				590,
 				591,
-				592
+				592,
+				593
 			]
 		},
 		{
@@ -881,7 +882,7 @@
 			"language" : "ASM",
 			"sourceIndexes" : 
 			[
-				15
+				16
 			]
 		}
 	],
@@ -974,7 +975,7 @@
 				12,
 				13,
 				14,
-				16,
+				15,
 				17,
 				18,
 				19,
@@ -1550,21 +1551,21 @@
 				589,
 				590,
 				591,
-				592
+				592,
+				593
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				15
+				16
 			]
 		},
 		{
 			"name" : "Object Libraries",
 			"sourceIndexes" : 
 			[
-				593,
 				594,
 				595,
 				596,
@@ -1589,7 +1590,9 @@
 				615,
 				616,
 				617,
-				618
+				618,
+				619,
+				620
 			]
 		}
 	],
@@ -1673,6 +1676,16 @@
 			],
 			"compileGroupIndex" : 0,
 			"path" : "Core/Src/dma.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 7,
+			"backtraces" : 
+			[
+				7
+			],
+			"compileGroupIndex" : 0,
+			"path" : "Core/Src/iwdg.c",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -7733,6 +7746,16 @@
 			],
 			"isGenerated" : true,
 			"path" : "build/RelWithDebInfo/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"backtraces" : 
+			[
+				4
+			],
+			"isGenerated" : true,
+			"path" : "build/RelWithDebInfo/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_iwdg.c.obj",
 			"sourceGroupIndex" : 2
 		},
 		{

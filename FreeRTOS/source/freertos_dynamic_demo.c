@@ -3,12 +3,15 @@
 
 #if configSUPPORT_STATIC_ALLOCATION == 0
 
-/* FreeRTOS 相关头文件，必须的 */
+/* FreeRTOS 相关头文件 */
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
 #include "semphr.h"
 #include "event_groups.h"
+
+/* HAL库头文件 */
+#include "iwdg.h"
 
 /* 用户头文件 */
 #include "BSP/USB_UART.h"
@@ -27,7 +30,12 @@
 
 BaseType_t state;
 uint8_t error_status;
-#define EVENT_BIT_0 (1 << 0) // 定义事件位 0（VL53L0X 开关）
+#define EVENT_BIT_0 (1 << 0)            // 定义事件位 0（VL53L0X 开关）
+#define IWDG_EVENT_BIT_LCD (1 << 0)     // 定义看门狗事件位 LCD
+#define IWDG_EVENT_BIT_KEY (1 << 1)     // 定义看门狗事件位 KEY
+#define IWDG_EVENT_BIT_VL53L0X (1 << 2) // 定义看门狗事件位 VL53L0X
+#define IWDG_EVENT_BIT_NTC (1 << 3)     // 定义看门狗事件位 NTC
+#define ALL_IWDG_EVENT_BIT (IWDG_EVENT_BIT_LCD | IWDG_EVENT_BIT_KEY | IWDG_EVENT_BIT_VL53L0X | IWDG_EVENT_BIT_NTC) // 定义看门狗事件位 所有事件位
 
 /* ======================================== */
 /* ============= 回调函数 ================= */
@@ -69,30 +77,36 @@ void Task_1(void *pvParameters); // LCD 任务函数（LVGL图形）
 void Task_2(void *pvParameters); // VL53L0X 开关按钮 任务函数
 void Task_3(void *pvParameters); // VL53L0X 激光测距 任务函数
 void Task_4(void *pvParameters); // NTC温度 任务函数（ADC测量）
+void Task_5(void *pvParameters); // 看门狗（负责监控所有任务健康度）
 
 /* 设置内存栈大小 */
 #define TASK_1_STACK 1024 // 设置内存栈大小，单位（Word）根据处理器架构位数变化 4096字节
 #define Task_2_STACK 512  // 设置内存栈大小，单位（Word）根据处理器架构位数变化 2048字节
 #define Task_3_STACK 512  // 设置内存栈大小，单位（Word）根据处理器架构位数变化 2048字节
 #define Task_4_STACK 512  // 设置内存栈大小，单位（Word）根据处理器架构位数变化 2048字节
+#define Task_5_STACK 512  // 设置内存栈大小，单位（Word）根据处理器架构位数变化 2048字节
 
 /* 设置优先等级 */
-#define Task_1_PRIORITY 3 // 优先等级（数字越大优先级越大，相反优先级越小）
+#define Task_1_PRIORITY 1 // 优先等级（数字越大优先级越大，相反优先级越小）
 #define Task_2_PRIORITY 4 // 优先等级（数字越大优先级越大，相反优先级越小）
-#define Task_3_PRIORITY 2 // 优先等级（数字越大优先级越大，相反优先级越小）
-#define Task_4_PRIORITY 1 // 优先等级（数字越大优先级越大，相反优先级越小）
+#define Task_3_PRIORITY 3 // 优先等级（数字越大优先级越大，相反优先级越小）
+#define Task_4_PRIORITY 2 // 优先等级（数字越大优先级越大，相反优先级越小）
+#define Task_5_PRIORITY 1 // 优先等级（数字越大优先级越大，相反优先级越小）
 
 /* 创建句柄 */
 TaskHandle_t Task_1_Handle; // 任务句柄
 TaskHandle_t Task_2_Handle; // 任务句柄
 TaskHandle_t Task_3_Handle; // 任务句柄
 TaskHandle_t Task_4_Handle; // 任务句柄
+TaskHandle_t Task_5_Handle; // 任务句柄
 
 QueueHandle_t Display_Queue_Handle; // 队列句柄
 
 SemaphoreHandle_t I2C_Mutex_Handle; // 互斥锁句柄
 
 EventGroupHandle_t EventGroupHandle; // 事件组句柄
+
+EventGroupHandle_t EventGroup_IWDG_Handle; // 看门狗事件组句柄
 
 /**
  * @brief 创建并启动FreeRTOS
@@ -154,6 +168,20 @@ void FreeRTOS_Dynamic_Start(void)
     {
         USB_Send_UART("任务四创建失败！");
     }
+    
+    /* 创建 Task_5 任务 */
+    state = xTaskCreate(
+        (TaskFunction_t)Task_5,               // 任务函数的地址
+        (const char *)"Task_5",               // 任务名字字符串
+        (configSTACK_DEPTH_TYPE)Task_5_STACK, // 任务栈大小，单位（Word）
+        (void *)NULL,                         // 传递给任务参数
+        (UBaseType_t)Task_5_PRIORITY,         // 任务优先级
+        (TaskHandle_t *)&Task_5_Handle        // 任务句柄的地址
+    );
+    if (state != pdPASS)
+    {
+        USB_Send_UART("任务五创建失败！");
+    }
 
     /* 创建队列 */
     Display_Queue_Handle = xQueueCreate(5, sizeof(Display_t));
@@ -175,8 +203,15 @@ void FreeRTOS_Dynamic_Start(void)
     {
         USB_Send_UART("事件组创建失败！\n");
     }
+    
+    /* 创建用于看门狗事件组 */
+    EventGroup_IWDG_Handle = xEventGroupCreate();
+    if (EventGroup_IWDG_Handle == NULL)
+    {
+        USB_Send_UART("事件组创建失败！\n");
+    }
 
-    /* 2.启动调度器：会自动创建IDLE空闲任务 */
+    /* 启动调度器：会自动创建IDLE空闲任务 */
     vTaskStartScheduler();
 }
 
@@ -218,6 +253,7 @@ void Task_1(void *pvParameters)
             sleep_time_ms = 33;
         }
 
+        xEventGroupSetBits(EventGroup_IWDG_Handle, IWDG_EVENT_BIT_LCD); // 正常完成一个周期，给看门狗打卡
         vTaskDelay(pdMS_TO_TICKS(sleep_time_ms));
     }
 }
@@ -228,8 +264,8 @@ void Task_1(void *pvParameters)
 void Task_2(void *pvParameters)
 {
     /* 1. 任务单次初始化（可选） */
-    static Button_t btn_1 = BUTTON_PULLUP(GPIOD, GPIO_PIN_8);
-    static Button_t btn_2 = BUTTON_PULLUP(GPIOD, GPIO_PIN_7);
+    static Button_t btn_1 = BUTTON_PULLUP(GPIOD, GPIO_PIN_8);   // 初始化上拉按钮1
+    static Button_t btn_2 = BUTTON_PULLUP(GPIOD, GPIO_PIN_7);   // 初始化上拉按钮2
 
     /* 2. 主死循环 */
     for (;;)
@@ -237,6 +273,17 @@ void Task_2(void *pvParameters)
         // 按钮一：开启激光测量 
         if (FallingEdge_Button(&btn_1) == BTN_TRIGGERED)
         {
+            // HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0); // 切换板载 LED 状态，作为按钮按下的视觉反馈
+            
+            // 进入互斥锁，防止多任务争夺同一个I2C线程
+            if (xSemaphoreTake(I2C_Mutex_Handle, pdMS_TO_TICKS(100)) == pdPASS)
+            {
+                error_status = VL53L0X_Start();
+                VL53L0X_Errors(error_status); // 检测开启过程是否错误
+                
+                xSemaphoreGive(I2C_Mutex_Handle); // 释放I2C使用权
+            }
+            
             // 设置事件标志位
             xEventGroupSetBits(EventGroupHandle, EVENT_BIT_0); // 开启
         }
@@ -244,10 +291,22 @@ void Task_2(void *pvParameters)
         // 按钮二：关闭激光测量
         if (FallingEdge_Button(&btn_2) == BTN_TRIGGERED)
         {
+            // HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0); // 切换板载 LED 状态，作为按钮按下的视觉反馈
+            
+            // 进入互斥锁，防止多任务争夺同一个I2C线程
+            if (xSemaphoreTake(I2C_Mutex_Handle, pdMS_TO_TICKS(100)) == pdPASS)
+            {
+                error_status = VL53L0X_Stop();
+                VL53L0X_Errors(error_status); // 检测关闭过程是否错误
+                
+                xSemaphoreGive(I2C_Mutex_Handle); // 释放I2C使用权
+            }
+            
             // 清除事件标志位
             xEventGroupClearBits(EventGroupHandle, EVENT_BIT_0); // 关闭
         }
 
+        xEventGroupSetBits(EventGroup_IWDG_Handle, IWDG_EVENT_BIT_KEY); // 正常完成一个周期，给看门狗打卡
         vTaskDelay(pdMS_TO_TICKS(20));
     }
 }
@@ -261,22 +320,21 @@ void Task_3(void *pvParameters)
     uint8_t error_status = VL53L0X_Init();
     VL53L0X_Errors(error_status);
 
-    int distance_mm = 0;
-    Display_t tx_msg = {0};
+    int distance_mm = 0;    // 采集测距数据
+    Display_t tx_msg = {0}; // 初始化设备信息数据
+    
+    static bool flag = true;   // 判断事件状态防止发送多次无意义 0 （显示关闭数据状态）
     /* 2. 主死循环 */
     for (;;)
     {
-        // 等待通知，阻塞直到有通知到来
-        EventBits_t event_value = xEventGroupGetBits(EventGroupHandle);
+        // 等待按钮通知
+        EventBits_t event_value = xEventGroupWaitBits(EventGroupHandle, EVENT_BIT_0, pdFALSE, pdFALSE, pdMS_TO_TICKS(200));
         if (event_value & EVENT_BIT_0)
         {
-            // 进入互斥锁，防止多任务争夺同一个I2C线程（当前只有一个任务在用 I2C）
-            if (xSemaphoreTake(I2C_Mutex_Handle, portMAX_DELAY) == pdPASS)
+            // 进入互斥锁，防止多任务争夺同一个I2C线程
+            if (xSemaphoreTake(I2C_Mutex_Handle, pdMS_TO_TICKS(100)) == pdPASS)
             {
                 // HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0); // 切换板载 LED 状态，作为按钮按下的视觉反馈
-                
-                error_status = VL53L0X_Start();
-                VL53L0X_Errors(error_status); // 检测开启过程是否错误
 
                 // 抓取最新的绝对毫米距离 (ToF 时间转换值)
                 distance_mm = VL53L0X_GetDistance();
@@ -291,31 +349,25 @@ void Task_3(void *pvParameters)
             // 将距离数据发送到LCD任务队列
             xQueueSend(Display_Queue_Handle, &tx_msg, 0);
             
-            vTaskDelay(pdMS_TO_TICKS(100));
+            flag = true;   // 当事件清除允许显示关闭数据状态
         }
         else
         {
-            // 进入互斥锁，防止多任务争夺同一个I2C线程（当前只有一个任务在用 I2C）
-            if (xSemaphoreTake(I2C_Mutex_Handle, portMAX_DELAY) == pdPASS)
+            if (flag == true)
             {
-                // HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0); // 切换板载 LED 状态，作为按钮按下的视觉反馈
-                
-                error_status = VL53L0X_Stop();
-                VL53L0X_Errors(error_status); // 检测关闭过程是否错误
-                
-                xSemaphoreGive(I2C_Mutex_Handle); // 释放I2C使用权
-            }
-            
-            /* 准备发送到LCD任务的消息 */
-            tx_msg.dev = VL53L0X;
-            tx_msg.value.val_int = 0;  // 显示关闭数据状态
+                /* 准备发送到LCD任务的消息 */
+                tx_msg.dev = VL53L0X;
+                tx_msg.value.val_int = 0;  // 显示关闭数据状态
 
-            // 将距离数据发送到LCD任务队列
-            xQueueSend(Display_Queue_Handle, &tx_msg, 0);
-            
-            // 进入阻塞状态，等待下一次置位任意事件标志位再唤醒
-            xEventGroupWaitBits(EventGroupHandle, EVENT_BIT_0, pdFALSE, pdFALSE, portMAX_DELAY);
+                // 将距离数据发送到LCD任务队列
+                xQueueSend(Display_Queue_Handle, &tx_msg, 0);
+                
+                flag = false;
+            }
         }
+        
+        xEventGroupSetBits(EventGroup_IWDG_Handle, IWDG_EVENT_BIT_VL53L0X); // 正常完成一个周期，给看门狗打卡
+        vTaskDelay(pdMS_TO_TICKS(50));
     }
 }
 
@@ -341,7 +393,27 @@ void Task_4(void *pvParameters)
         // 将温度数据发送到LCD任务队列
         xQueueSend(Display_Queue_Handle, &tx_msg, 0);
 
+        // 正常完成一个周期，给看门狗打卡
+        xEventGroupSetBits(EventGroup_IWDG_Handle, IWDG_EVENT_BIT_NTC);
         vTaskDelay(pdMS_TO_TICKS(1000));
+    }
+}
+
+/**
+ * @brief 看门狗（负责监控所有任务健康度）
+ */
+void Task_5(void *pvParameters)
+{
+    /* 1. 任务单次初始化（可选） */
+    
+    /* 2. 主死循环 */
+    for (;;)
+    {
+        EventBits_t iwdg_event = xEventGroupWaitBits(EventGroup_IWDG_Handle, ALL_IWDG_EVENT_BIT, pdTRUE, pdTRUE, portMAX_DELAY);
+        if ((iwdg_event & ALL_IWDG_EVENT_BIT) == ALL_IWDG_EVENT_BIT)
+        {
+            HAL_IWDG_Refresh(&hiwdg);   // 所有任务都打卡（正常运行）
+        }
     }
 }
 
