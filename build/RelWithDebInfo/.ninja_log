@@ -635,3 +635,5 @@
 259	621	8169429977033996	lvgl_project.elf	753ba7a0f3807b3a
 20	118	8169430749198793	CMakeFiles/lvgl_project.dir/BSP/USB_UART.c.obj	b62abbc062923c6d
 119	478	8169430750196086	lvgl_project.elf	753ba7a0f3807b3a
+24	265	8169435687787636	CMakeFiles/lvgl_project.dir/FreeRTOS/source/freertos_dynamic_demo.c.obj	4b2c850a18317ee3
+265	631	8169435690193483	lvgl_project.elf	753ba7a0f3807b3a

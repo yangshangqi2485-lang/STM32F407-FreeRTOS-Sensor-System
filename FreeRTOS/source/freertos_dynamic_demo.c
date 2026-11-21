@@ -221,7 +221,7 @@ void FreeRTOS_Dynamic_Start(void)
 void Task_1(void *pvParameters)
 {
     /* 1. 任务单次初始化（可选） */
-    vTaskDelay(100);
+    vTaskDelay(1000);
     /* LVGL 系统初始化 */
     lv_init();            // 初始化 LVGL
     lv_port_disp_init();  // 初始化LCD显示屏移植层
