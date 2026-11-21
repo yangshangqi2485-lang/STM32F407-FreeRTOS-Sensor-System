@@ -116,7 +116,7 @@ header file. */
 
 /* Definitions that map the FreeRTOS port interrupt handlers to their CMSIS
 standard names. */
-#define vPortSVCHandler SVC_Handler	
+#define vPortSVCHandler SVC_Handler
 #define xPortPendSVHandler PendSV_Handler
 #define xPortSysTickHandler SysTick_Handler
 
@@ -128,12 +128,6 @@ standard names. */
 #define configUSE_STATS_FORMATTING_FUNCTIONS 1
 #define configUSE_QUEUE_SETS 1	// 使用队列集
 #define configTASK_NOTIFICATION_ARRAY_ENTRIES 3 // 配置任务通知数组条目
-
-#include "freertos_dynamic_demo.h"
-#define configUSE_TICKLESS_IDLE 1	// 配置低功耗空闲时无滴答	
-#define configEXPECTED_IDLE_TIME_BEFORE_SLEEP 10
-// #define configPRE_SLEEP_PROCESSING(x) PRE_SLEEP_PROCESSING()
-// #define configPOST_SLEEP_PROCESSING(x) POST_SLEEP_PROCESSING()
 
 #endif /* FREERTOS_CONFIG_H */
 

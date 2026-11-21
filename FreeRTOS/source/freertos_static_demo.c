@@ -12,13 +12,6 @@
 /* ======================================== */
 
 /* 启动任务配置 */
-void Task_Start(void *pvParameters);            // 任务函数
-#define Task_Start_Stack 128                    // 设置内存栈大小，单位（Word）根据处理器架构位数变化
-#define Task_Start_Priority 5                   // 优先等级（数字越大优先级越大，相反优先级越小）
-StackType_t task_start_stack[Task_Start_Stack]; // 静态任务栈（数组地址）
-StaticTask_t task_start_tcb;                    // 静态任务TCB结构体类型
-TaskHandle_t Task_Start_Handle;                 // 句柄
-
 /* LED_1任务配置 */
 void Task_1(void *pvParameters);            // 任务函数
 #define TASK_1_STACK 512                    // 设置内存栈大小，单位（Word）根据处理器架构位数变化
@@ -83,28 +76,6 @@ void vApplicationGetTimerTaskMemory(
  */
 void FreeRTOS_Static_Start(void)
 {
-    /* 1.创建专门启动FreeRTOS调度器的任务 */
-    xTaskCreateStatic(
-        (TaskFunction_t)Task_Start,
-        (const char *)"Task_Start",
-        (const uint32_t)Task_Start_Stack,
-        (void *)NULL,
-        (UBaseType_t)Task_Start_Priority,
-        (StackType_t *)task_start_stack,
-        (StaticTask_t *)&task_start_tcb);
-
-    /* 2.启动调度器：会自动创建空闲任务 */
-    vTaskStartScheduler();
-}
-
-/**
- * @brief 启动任务：启动创建好的任务
- */
-void Task_Start(void *pvParameters)
-{
-    // 进入临界区（保护代码），防止出现抢占式上下文切换导致未能创建所有任务需要
-    taskENTER_CRITICAL();
-
     /* 创建 LED_1 任务 */
     Task_1_Handle = xTaskCreateStatic(
         (TaskFunction_t)Task_1,               // 任务函数的地址
@@ -126,12 +97,9 @@ void Task_Start(void *pvParameters)
         (StackType_t *)task_2_stack,          // 静态任务栈（数组地址）
         (StaticTask_t *)&task_2_tcb           // 静态任务TCB结构体类型
     );
-    
-    // 退出临界区
-    taskEXIT_CRITICAL();
-    
-    // 创建任务只需要一次，用完立马销毁此任务
-    vTaskDelete(NULL);
+
+    /* 2.启动调度器：会自动创建空闲任务 */
+    vTaskStartScheduler();
 }
 
 /* 测试FreeRTOS任务调度状态 */

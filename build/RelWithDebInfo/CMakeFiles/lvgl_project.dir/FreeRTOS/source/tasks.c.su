@@ -1,7 +1,7 @@
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:5297:13:prvAddCurrentTaskToDelayedList	24	static
+D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:3427:8:prvIdleTask	8	static
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:2720:12:xTaskIncrementTick.part.0	48	static
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:2174:12:xTaskResumeAll.part.0	48	static
-D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:3427:8:prvIdleTask	40	static
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:721:16:xTaskCreate	40	static
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:1112:10:vTaskDelete	16	static
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:1214:16:xTaskDelayUntil	16	static
@@ -20,7 +20,6 @@ D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:2286:12:xTaskGetTi
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:2301:12:xTaskGetTickCountFromISR	8	static
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:2332:13:uxTaskGetNumberOfTasks	0	static
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:2340:8:pcTaskGetName	0	static
-D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:2581:10:vTaskStepTick	16	static
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:2616:12:xTaskCatchUpTicks	16	static
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:2720:12:xTaskIncrementTick	0	static
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:3009:6:vTaskSwitchContext	8	static
@@ -36,7 +35,6 @@ D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:3306:12:xTaskCheck
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:3371:6:vTaskMissedYield	0	static
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:3379:17:uxTaskGetTaskNumber	0	static
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:3402:10:vTaskSetTaskNumber	0	static
-D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:3546:22:eTaskConfirmSleepModeStatus	0	static
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:3719:10:vTaskGetInfo	24	static
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:3822:24:prvListTasksWithinSingleList.part.0	32	static
 D:/ysq/MCU/stm32f407vet6/lvgl_project/FreeRTOS/source/tasks.c:2489:17:uxTaskGetSystemState	32	static

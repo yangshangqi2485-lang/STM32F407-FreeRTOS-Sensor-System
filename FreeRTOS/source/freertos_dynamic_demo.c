@@ -87,11 +87,11 @@ void Task_5(void *pvParameters); // 看门狗（负责监控所有任务健康�
 #define Task_5_STACK 512  // 设置内存栈大小，单位（Word）根据处理器架构位数变化 2048字节
 
 /* 设置优先等级 */
-#define Task_1_PRIORITY 1 // 优先等级（数字越大优先级越大，相反优先级越小）
-#define Task_2_PRIORITY 4 // 优先等级（数字越大优先级越大，相反优先级越小）
-#define Task_3_PRIORITY 3 // 优先等级（数字越大优先级越大，相反优先级越小）
-#define Task_4_PRIORITY 2 // 优先等级（数字越大优先级越大，相反优先级越小）
-#define Task_5_PRIORITY 1 // 优先等级（数字越大优先级越大，相反优先级越小）
+#define Task_1_PRIORITY 2 // 优先等级（数字越大优先级越大，相反优先级越小）
+#define Task_2_PRIORITY 5 // 优先等级（数字越大优先级越大，相反优先级越小）
+#define Task_3_PRIORITY 4 // 优先等级（数字越大优先级越大，相反优先级越小）
+#define Task_4_PRIORITY 3 // 优先等级（数字越大优先级越大，相反优先级越小）
+#define Task_5_PRIORITY 2 // 优先等级（数字越大优先级越大，相反优先级越小）
 
 /* 创建句柄 */
 TaskHandle_t Task_1_Handle; // 任务句柄
@@ -221,7 +221,7 @@ void FreeRTOS_Dynamic_Start(void)
 void Task_1(void *pvParameters)
 {
     /* 1. 任务单次初始化（可选） */
-
+    vTaskDelay(100);
     /* LVGL 系统初始化 */
     lv_init();            // 初始化 LVGL
     lv_port_disp_init();  // 初始化LCD显示屏移植层
@@ -367,7 +367,7 @@ void Task_3(void *pvParameters)
         }
         
         xEventGroupSetBits(EventGroup_IWDG_Handle, IWDG_EVENT_BIT_VL53L0X); // 正常完成一个周期，给看门狗打卡
-        vTaskDelay(pdMS_TO_TICKS(50));
+        vTaskDelay(pdMS_TO_TICKS(100));
     }
 }
 

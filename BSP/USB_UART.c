@@ -33,7 +33,7 @@ uint8_t USB_Send_Safe(uint8_t *Buf, uint16_t Len, uint32_t Timeout_ms)
  */
 void USB_Send_UART(const char *format, ...)
 {
-  char send_buf[1024]; // 根据你单次打印的最大长度调整大小
+  char send_buf[512]; // 根据你单次打印的最大长度调整大小
 
   // 1. va_list: 声明一个“参数游标/指针”
   va_list args;

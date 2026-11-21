@@ -2,8 +2,8 @@
 #include "tim.h"
 
 /*引脚配置*/
-#define SCL(x) HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, (x)) // PA2 SCL(0):低电平 SCL(0):高电平
-#define SDA(x) HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, (x)) // PA3 SDA(0):低电平 SDA(0):高电平
+#define SCL(x) HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, (x)) // PA3 SCL(0):低电平 SCL(0):高电平
+#define SDA(x) HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, (x)) // PA2 SDA(0):低电平 SDA(0):高电平
 #define READ_SDA HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2)     // 读取 PA2 数据电平
 
 /**
@@ -173,7 +173,7 @@ void Software_I2C_SendByte(uint8_t Byte)
     uint8_t i;
     for (i = 0; i < 8; i++)
     {
-        SDA(Byte & (0x80 >> i)); // 进行转换两次逻辑非，强制 0 或 1，消除非零数值的多样性，强制进行二值化
+        SDA(!!(Byte & (0x80 >> i))); // 进行转换两次逻辑非，强制 0 或 1，消除非零数值的多样性，强制进行二值化
         SCL(1);
         Delay_us(1);
         SCL(0);

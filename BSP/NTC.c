@@ -3,17 +3,17 @@
 #include "adc.h"
 #include <math.h>
 
-#define B_VALUE      3950.0   // 通用B值(根据 NTC 参数)
-#define R25_VALUE    10000.0  // 25度标准阻值 10k
-#define T25_KELVIN   298.15   // 开尔文常数 (273.15 + 25)
+#define B_VALUE      3950.0f   // 通用B值(根据 NTC 参数)
+#define R25_VALUE    10000.0f  // 25度标准阻值 10k
+#define T25_KELVIN   298.15f   // 开尔文常数 (273.15 + 25)
 
 #define ADC_HANDLE &hadc1 // 选择adc通道
 #define ADC_CHANNEL 1     // ADC通道索引
-#define VCC 3.3
+#define VCC 3.3f
 
 int value = 0;
-float voltage = 0.0;
-uint16_t adc_buffer[ADC_CHANNEL]; // ADC内部通道数量
+float voltage = 0.0f;
+volatile uint16_t adc_buffer[ADC_CHANNEL]; // ADC内部通道数量
 
 void NTC_DMA_Init(void)
 {
@@ -45,10 +45,10 @@ int NTC_DMA_Value(uint8_t channel_index)
 float NTC_DMA_Voltage(uint8_t channel_index)
 {
     // 防止数组越界
-    if(channel_index >= ADC_CHANNEL) return 0.0;
+    if(channel_index >= ADC_CHANNEL) return 0.0f;
     
     value = adc_buffer[channel_index];   // 获取ADC采样值 
-    voltage = (value / 4095.0) * VCC;
+    voltage = (value / 4095.0f) * VCC;
     
     return voltage;
 }
@@ -60,16 +60,16 @@ float NTC_DMA_Voltage(uint8_t channel_index)
  */
 float NTC_Temperature(int adValue)
 {
-    if (adValue >= 4095 || adValue == 0) return -99.0; // 异常处理
+    if (adValue >= 4095 || adValue == 0) return -99.0f; // 异常处理
     
     // 1. 根据分压公式计算当前 NTC 电阻值 (R1 = 10000.0)
-    float r_ntc = ((float)adValue * 10000.0) / (4095.0 - (float)adValue);
+    float r_ntc = ((float)adValue * 10000.0f) / (4095.0f - (float)adValue);
     
     // 2. 代入 B 值公式计算开尔文温度
-    float kelvin = 1.0 / ( (1.0 / T25_KELVIN) + (1.0 / B_VALUE) * log(r_ntc / R25_VALUE) );
+    float kelvin = 1.0f / ( (1.0f / T25_KELVIN) + (1.0f / B_VALUE) * logf(r_ntc / R25_VALUE) );
     
     // 3. 转为摄氏度并进行单点校准修正
-    float temperature = kelvin - 273.15;
+    float temperature = kelvin - 273.15f;
     
     return temperature;
 }

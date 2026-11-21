@@ -73,19 +73,19 @@ void lv_port_disp_init(void)
 
     /* Example 1
      * One buffer for partial rendering*/
-    LV_ATTRIBUTE_MEM_ALIGN
-    static uint8_t buf_1_1[MY_DISP_HOR_RES * 10 * BYTE_PER_PIXEL]; /*A buffer for 10 rows*/
-    lv_display_set_buffers(disp, buf_1_1, NULL, sizeof(buf_1_1), LV_DISPLAY_RENDER_MODE_PARTIAL);
+    // LV_ATTRIBUTE_MEM_ALIGN
+    // static uint8_t buf_1_1[MY_DISP_HOR_RES * 10 * BYTE_PER_PIXEL]; /*A buffer for 10 rows*/
+    // lv_display_set_buffers(disp, buf_1_1, NULL, sizeof(buf_1_1), LV_DISPLAY_RENDER_MODE_PARTIAL);
 
     /* Example 2
      * Two buffers for partial rendering
      * In flush_cb DMA or similar hardware should be used to update the display in the background.*/
-    // LV_ATTRIBUTE_MEM_ALIGN
-    // static uint8_t buf_2_1[MY_DISP_HOR_RES * 10 * BYTE_PER_PIXEL];
+    LV_ATTRIBUTE_MEM_ALIGN
+    static uint8_t buf_2_1[MY_DISP_HOR_RES * 10 * BYTE_PER_PIXEL];
 
-    // LV_ATTRIBUTE_MEM_ALIGN
-    // static uint8_t buf_2_2[MY_DISP_HOR_RES * 10 * BYTE_PER_PIXEL];
-    // lv_display_set_buffers(disp, buf_2_1, buf_2_2, sizeof(buf_2_1), LV_DISPLAY_RENDER_MODE_PARTIAL);
+    LV_ATTRIBUTE_MEM_ALIGN
+    static uint8_t buf_2_2[MY_DISP_HOR_RES * 10 * BYTE_PER_PIXEL];
+    lv_display_set_buffers(disp, buf_2_1, buf_2_2, sizeof(buf_2_1), LV_DISPLAY_RENDER_MODE_PARTIAL);
 
     /* Example 3
      * Two buffers screen sized buffer for double buffering.
@@ -130,6 +130,7 @@ void disp_disable_update(void)
  *`px_map` contains the rendered image as raw pixel map and it should be copied to `area` on the display.
  *You can use DMA or any hardware acceleration to do this operation in the background but
  *'lv_display_flush_ready()' has to be called when it's finished.*/
+static lv_display_t * volatile disp_drv_global = NULL;
 static void disp_flush(lv_display_t *disp_drv, const lv_area_t *area, uint8_t *px_map)
 {
     if (disp_flush_enabled)
@@ -137,20 +138,41 @@ static void disp_flush(lv_display_t *disp_drv, const lv_area_t *area, uint8_t *p
         uint32_t width = area->x2 - area->x1 + 1;
         uint32_t height = area->y2 - area->y1 + 1;
         uint32_t pixel_count = width * height;
+        
+        disp_drv_global = disp_drv;
 
         LCD_SetAddressWindow(area->x1, area->y1, area->x2, area->y2); // 换成 LCD 驱动里设置窗口/坐标范围的真实函数
 
         LCD_CS(0); // 片选拉低，开始传输
         LCD_DC(1); // 拉高 DC 引脚表示传输的是颜色数据
 
-        HAL_SPI_Transmit(&hspi1, px_map, pixel_count * 2, HAL_MAX_DELAY);
+        if (HAL_SPI_Transmit_DMA(&hspi1, px_map, pixel_count * 2) != HAL_OK)
+        {
+            /* 启动失败时的兜底：释放片选并通知 LVGL，防画面死锁 */
+            LCD_CS(1);
+            lv_display_flush_ready(disp_drv);
+        }
 
-        LCD_CS(1); // 片选拉高，结束传输
+        // LCD_CS(1); // 片选拉高，结束传输(DMA不适用)
     }
-
+    
     /*IMPORTANT!!!
      *Inform the graphics library that you are ready with the flushing*/
-    lv_display_flush_ready(disp_drv);
+    // lv_display_flush_ready(disp_drv);   // (DMA不适用)
+}
+
+
+void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+    if (hspi->Instance == SPI1)
+    {
+        LCD_CS(1);
+        if (disp_drv_global != NULL)
+        {
+            lv_display_flush_ready(disp_drv_global);
+        }
+    }
+    
 }
 
 #else /*Enable this file at the top*/
